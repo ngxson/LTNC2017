@@ -13,7 +13,7 @@
 #define NUM_OF_BOX 4
 QGraphicsRectItem *box[NUM_OF_BOX];
 bool canPressNote = true;
-Music *music = new Music();
+//Music *music = new Music();
 
 BottomBar::BottomBar() {
     int i;
@@ -27,7 +27,7 @@ BottomBar::BottomBar() {
         box[i]->setPos(i*CELL_WIDTH,SCREEN_HEIGHT-BOTTOM_BAR_HEIGHT);
         box[i]->setBrush(* new QBrush(Qt::white));
     }
-    music->loadNewSong();
+    //music->loadNewSong();
 }
 
 void BottomBar::keyPressEvent(QKeyEvent *event){
@@ -64,7 +64,7 @@ void BottomBar::keyReleaseEvent(QKeyEvent *event){
 }
 
 void BottomBar::checkPressKey(int key) {
-    music->playNextNote();
+    //music->playNextNote();
     /*if (key == rightKey) {
         qDebug() << "OK";
     } else {

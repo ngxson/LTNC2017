@@ -4,16 +4,18 @@
 #include <QObject>
 #include <QGraphicsItemGroup>
 #include <QSignalMapper>
-#include <Cell.h>
+#include "Cell.h"
 
 class Row: public QObject,public QGraphicsItemGroup {
     Q_OBJECT
 public:
     Cell *cell[10];
     int rightCell;
-    int c;
+    bool isRedNote;
     Row();
     void setRightCell();
+    int getRightCell();
+    bool getIsRedNote();
 };
 
 #endif // ROW_H

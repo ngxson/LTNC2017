@@ -8,7 +8,7 @@ QT       += core gui multimedia multimedia-private
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = tut4
+TARGET = ltnc2017
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,24 +24,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp \
-    Cell.cpp \
-    Row.cpp \
-    BottomBar.cpp \
-    Music.cpp \
-    PlayScreen.cpp
-SOURCES += MyRect.cpp
+    mainwindow.cpp \
+    play/Cell.cpp \
+    play/Row.cpp \
+    play/BottomBar.cpp \
+    play/Music.cpp \
+    play/PlayScreen.cpp \
+    playwindow.cpp
+SOURCES +=
 SOURCES +=
 
-HEADERS  += MyRect.h \
-    Cell.h \
-    Row.h \
-    const.h \
-    BottomBar.h \
-    Music.h \
-    PlayScreen.h
+HEADERS  += \
+    mainwindow.h \
+    play/Cell.h \
+    play/Row.h \
+    play/const.h \
+    play/BottomBar.h \
+    play/Music.h \
+    play/PlayScreen.h \
+    play/Mouse.h \
+    Game.h \
+    playwindow.h
 HEADERS  +=
 
-FORMS    +=
+FORMS    += \
+    mainwindow.ui
 
 DISTFILES += \
     notes/1.wav \
@@ -114,4 +121,5 @@ DISTFILES += \
     notes/9.wav
 
 RESOURCES += \
-    notes.qrc
+    notes.qrc \
+    images.qrc
