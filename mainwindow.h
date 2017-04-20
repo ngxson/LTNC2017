@@ -18,6 +18,7 @@ public:
 
 private slots:
     void on_btnPlay_clicked();
+    void render_main();
 
 private:
     Ui::MainWindow *ui;
