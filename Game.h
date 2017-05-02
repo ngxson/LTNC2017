@@ -3,6 +3,8 @@
 
 extern int mouse_x;
 extern int mouse_y;
+extern int score;
+extern bool isGameOver;
 
 class Game
 {

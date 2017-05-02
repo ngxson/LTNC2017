@@ -1,11 +1,13 @@
 <RCC>
     <qresource prefix="/img">
-        <file>images/note_black.png</file>
         <file>images/note_red.png</file>
-        <file>images/ingame_bg.png</file>
-        <file>images/note_none.png</file>
-        <file>images/intro_bg.png</file>
         <file>images/intro_notes.png</file>
         <file>images/intro_logo.png</file>
+        <file>images/intro_bg.png</file>
+        <file>images/intro_sky1.png</file>
+        <file>images/intro_sky2.png</file>
+        <file>images/ingame_bg.png</file>
+        <file>images/note_black.png</file>
+        <file>images/note_none.png</file>
     </qresource>
 </RCC>

@@ -30,7 +30,8 @@ SOURCES += main.cpp \
     play/BottomBar.cpp \
     play/Music.cpp \
     play/PlayScreen.cpp \
-    playwindow.cpp
+    playwindow.cpp \
+    scorescreen.cpp
 SOURCES +=
 SOURCES +=
 
@@ -44,11 +45,13 @@ HEADERS  += \
     play/PlayScreen.h \
     play/Mouse.h \
     Game.h \
-    playwindow.h
+    playwindow.h \
+    scorescreen.h
 HEADERS  +=
 
 FORMS    += \
-    mainwindow.ui
+    mainwindow.ui \
+    scorescreen.ui
 
 DISTFILES += \
     notes/1.wav \

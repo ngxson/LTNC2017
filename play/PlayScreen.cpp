@@ -18,13 +18,17 @@ QGraphicsPixmapItem *background[2];
 Music *music;
 int speed = SPEED_MIN;
 qreal speed_real = SPEED_MIN;
-int current_row = 0;
-int right_cell = 0;
+int current_row;
+int right_cell;
 bool dontCheckBottomRow = false;
 
 PlayScreen::PlayScreen()
 {
     int y;
+    current_row = 0;
+    right_cell = 0;
+    speed = SPEED_MIN;
+    speed_real = SPEED_MIN;
 
     this->setAcceptHoverEvents(true);
     // Seed random function
