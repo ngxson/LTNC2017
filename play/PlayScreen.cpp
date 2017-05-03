@@ -1,6 +1,8 @@
 #include "const.h"
 #include "../Game.h"
 #include "Music.h"
+#include "Score.h"
+#include "Lives.h"
 #include "PlayScreen.h"
 #include <QTime>
 #include <QTimer>
@@ -10,6 +12,9 @@
 #include <QString>
 #include <QDebug>
 #include <QWidget>
+
+int score = 0;
+int lives = 0;
 
 #define LAST_ROW NUM_OF_CELL_Y-1
 
@@ -21,6 +26,8 @@ qreal speed_real = SPEED_MIN;
 int current_row;
 int right_cell;
 bool dontCheckBottomRow = false;
+Score *scoretxt;
+Lives *livestxt;
 
 PlayScreen::PlayScreen()
 {
@@ -62,6 +69,13 @@ PlayScreen::PlayScreen()
     mo->setPos(0,SCREEN_HEIGHT-BOTTOM_BAR_HEIGHT);
     this->addToGroup(mo);
     music = new Music();
+
+    scoretxt = new Score();
+    livestxt = new Lives();
+    livestxt->setPos(0,24);
+
+    this->addToGroup(scoretxt);
+    this->addToGroup(livestxt);
 }
 
 void PlayScreen::render() {
@@ -122,9 +136,15 @@ void PlayScreen::checkIfHitBar(int right_cell, bool isRedNote, int y) {
     if (mo->x() > (right_cell-0.5)*CELL_WIDTH && mo->x() < (right_cell+0.5)*CELL_WIDTH) {
         if (isRedNote) {
             music->playRedNote();
+            scoretxt->decrease(10);
         } else {
             music->playNextNote();
+            scoretxt->increase(1);
         }
         row[y]->cell[right_cell]->setScale(0.9);
+    } else {
+        if (!isRedNote) {
+            livestxt->decrease();
+        }
     }
 }

@@ -39,7 +39,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>330</y>
+     <y>310</y>
      <width>501</width>
      <height>41</height>
     </rect>
@@ -58,7 +58,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>200</y>
+     <y>180</y>
      <width>501</width>
      <height>51</height>
     </rect>
@@ -77,7 +77,7 @@
    <property name="geometry">
     <rect>
      <x>172</x>
-     <y>397</y>
+     <y>370</y>
      <width>161</width>
      <height>51</height>
     </rect>
@@ -89,14 +89,14 @@
     </font>
    </property>
    <property name="text">
-    <string>← Go back</string>
+    <string>Go back</string>
    </property>
   </widget>
   <widget class="QPushButton" name="s1">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>150</y>
+     <y>130</y>
      <width>501</width>
      <height>51</height>
     </rect>
@@ -115,7 +115,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>250</y>
+     <y>230</y>
      <width>501</width>
      <height>41</height>
     </rect>
@@ -134,7 +134,7 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>290</y>
+     <y>270</y>
      <width>501</width>
      <height>41</height>
     </rect>

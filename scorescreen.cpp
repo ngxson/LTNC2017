@@ -11,7 +11,7 @@ ScoreScreen::ScoreScreen(QWidget *parent) :
     ui(new Ui::ScoreScreen)
 {
     ui->setupUi(this);
-    ui->btnBack->setStyleSheet("QPushButton{background: transparent; color: white;}");
+    ui->btnBack->setStyleSheet("QPushButton{background: transparent; color: white;border:2px solid #ffffff;}");
     ui->s1->setStyleSheet("QPushButton{background: transparent; color: white;}");
     ui->s2->setStyleSheet("QPushButton{background: transparent; color: white;}");
     ui->s3->setStyleSheet("QPushButton{background: transparent; color: white;}");
@@ -20,7 +20,7 @@ ScoreScreen::ScoreScreen(QWidget *parent) :
 
     //Load background
     QGraphicsPixmapItem* intro_bg = new QGraphicsPixmapItem();
-    intro_bg->setPixmap(QPixmap(":/img/images/intro_sky1.png"));
+    intro_bg->setPixmap(QPixmap(":/img/images/intro_scoreboard.png"));
     intro_bg->setPos(0, 0);
     QGraphicsScene * scene = new QGraphicsScene();
     scene->addItem(intro_bg);

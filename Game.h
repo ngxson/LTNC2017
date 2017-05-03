@@ -4,6 +4,7 @@
 extern int mouse_x;
 extern int mouse_y;
 extern int score;
+extern int lives;
 extern bool isGameOver;
 
 class Game

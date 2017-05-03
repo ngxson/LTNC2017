@@ -4,7 +4,7 @@
 - Catch the "white" notes to get the highest score.
 - Avoid the "red" notes.
 
-# Features
+# Screenshots
 
 - <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/1.png" width="200">
 		

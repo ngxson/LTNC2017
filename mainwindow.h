@@ -19,6 +19,8 @@ public:
 private slots:
     void on_btnPlay_clicked();
     void on_btnHighScore_clicked();
+    void on_btnAction_clicked();
+    void on_btnAbout_clicked();
     void render_main();
 
 private:

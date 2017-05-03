@@ -31,6 +31,8 @@ SOURCES += main.cpp \
     play/Music.cpp \
     play/PlayScreen.cpp \
     playwindow.cpp \
+	play/Score.cpp \
+	play/Lives.cpp \
     scorescreen.cpp
 SOURCES +=
 SOURCES +=
@@ -45,6 +47,8 @@ HEADERS  += \
     play/PlayScreen.h \
     play/Mouse.h \
     Game.h \
+    play/Score.h \
+    play/Lives.h \
     playwindow.h \
     scorescreen.h
 HEADERS  +=

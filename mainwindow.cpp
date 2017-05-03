@@ -12,9 +12,16 @@
 
 #define INTRO_WIDTH 500
 #define FINE_TUNE -170
+#define MODE_HOME 0
+#define MODE_HOWTOPLAY 1
+#define MODE_ABOUTUS 2
 
+int intro_mode = MODE_HOME;
 QGraphicsPixmapItem *sky[2];
 QTimer * timer = new QTimer();
+QGraphicsPixmapItem* intro_aboutus;
+QGraphicsPixmapItem* intro_howtoplay;
+QGraphicsPixmapItem* intro_bg;
 
 void setUpFileSystem();
 
@@ -23,15 +30,30 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    intro_mode = MODE_HOME;
     this->statusBar()->setSizeGripEnabled(false);
     ui->btnPlay->setStyleSheet("QPushButton{background: transparent;}");
     ui->btnAbout->setStyleSheet("QPushButton{background: transparent;}");
     ui->btnHighScore->setStyleSheet("QPushButton{background: transparent;}");
+    ui->btnAction->setStyleSheet("QPushButton{background: transparent; color: white;}");
 
-    //Load background
-    QGraphicsPixmapItem* intro_bg = new QGraphicsPixmapItem();
+    //Load intro img
+    intro_bg = new QGraphicsPixmapItem();
     intro_bg->setPixmap(QPixmap(":/img/images/intro_bg.png"));
     intro_bg->setPos(FINE_TUNE, 0);
+    intro_bg->setVisible(true);
+
+    //Set and hide hottoplay and aboutus
+    intro_howtoplay = new QGraphicsPixmapItem();
+    intro_howtoplay->setPixmap(QPixmap(":/img/images/intro_howtoplay.png"));
+    intro_howtoplay->setPos(FINE_TUNE, -20);
+    intro_howtoplay->setVisible(false);
+    intro_aboutus = new QGraphicsPixmapItem();
+    intro_aboutus->setPixmap(QPixmap(":/img/images/intro_about.png"));
+    intro_aboutus->setPos(FINE_TUNE, -20);
+    intro_aboutus->setVisible(false);
+
+    //Load background
     sky[0] = new QGraphicsPixmapItem();
     sky[0]->setPixmap(QPixmap(":/img/images/intro_sky1.png"));
     sky[0]->setPos(-INTRO_WIDTH+FINE_TUNE, 0);
@@ -43,6 +65,8 @@ MainWindow::MainWindow(QWidget *parent) :
     scene->addItem(sky[0]);
     scene->addItem(sky[1]);
     scene->addItem(intro_bg);
+    scene->addItem(intro_howtoplay);
+    scene->addItem(intro_aboutus);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setScene(scene);
@@ -69,26 +93,53 @@ void setUpFileSystem() {
 
 void MainWindow::on_btnPlay_clicked()
 {
-    QObject *senderObj = sender();
-    QPushButton* button = qobject_cast<QPushButton*>(senderObj);
+    if (intro_mode == MODE_HOME) {
+        intro_mode = MODE_HOWTOPLAY;
+        ui->btnAction->setText("PLAY NOW");
+        ui->btnAction->setStyleSheet("border:2px solid #ffffff;background: transparent; color: white;");
+        intro_bg->setVisible(false);
+        intro_howtoplay->setVisible(true);
+    }
+}
 
-    timer->stop();
-    disconnect(timer,SIGNAL(timeout()),this,SLOT(render_main()));
-    this->hide();
-    playwindow *p = new playwindow();
-    p->view.show();
+void MainWindow::on_btnAction_clicked()
+{
+    if (intro_mode == MODE_HOWTOPLAY) {
+        intro_mode = MODE_HOME;
+        timer->stop();
+        ui->btnAction->setText("");
+        ui->btnAction->setStyleSheet("border:none;background: transparent;");
+        disconnect(timer,SIGNAL(timeout()),this,SLOT(render_main()));
+        this->hide();
+        playwindow *p = new playwindow();
+        p->view.show();
+    } else if (intro_mode == MODE_ABOUTUS) {
+        intro_mode = MODE_HOME;
+        intro_aboutus->setVisible(false);
+        intro_bg->setVisible(true);
+        ui->btnAction->setText("");
+        ui->btnAction->setStyleSheet("border:none;background: transparent;");
+    }
 }
 
 void MainWindow::on_btnHighScore_clicked()
 {
-    QObject *senderObj = sender();
-    QPushButton* button = qobject_cast<QPushButton*>(senderObj);
-
     timer->stop();
     disconnect(timer,SIGNAL(timeout()),this,SLOT(render_main()));
     this->hide();
     ScoreScreen *p = new ScoreScreen();
     p->show();
+}
+
+void MainWindow::on_btnAbout_clicked()
+{
+    if (intro_mode == MODE_HOME) {
+        intro_mode = MODE_ABOUTUS;
+        ui->btnAction->setText("Go Back");
+        ui->btnAction->setStyleSheet("border:2px solid #ffffff;background: transparent; color: white;");
+        intro_bg->setVisible(false);
+        intro_aboutus->setVisible(true);
+    }
 }
 
 void MainWindow::render_main() {
