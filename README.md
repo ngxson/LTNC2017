@@ -4,6 +4,10 @@
 - Catch the "white" notes to get the highest score.
 - Avoid the "red" notes.
 
+# Installing
+
+- Just download the installer from [HERE](https://github.com/ngxson/LTNC2017/blob/master/prebuilt/setup.exe?raw=true)
+
 # Screenshots
 
 - <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/1.png" height="250"> <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/2.png" height="250"> <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/3.png" height="250">

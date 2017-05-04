@@ -27,6 +27,8 @@ QGraphicsPixmapItem* intro_bg;
 QGraphicsPixmapItem* intro_loading;
 QMediaPlayer *pianoNotes[3][70];
 QString appDir = qApp->applicationDirPath();
+QMediaPlayer *bg_music;
+bool introMusicPlaying = false;
 
 void setUpFileSystem();
 bool isGameOver = false;
@@ -87,6 +89,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(timer,SIGNAL(timeout()),this,SLOT(render_main()));
     timer->start(15);
+
+    if (!introMusicPlaying) {
+        bg_music = new QMediaPlayer;
+        bg_music->setMedia(QUrl(qApp->applicationDirPath()+"/intro.mp3"));
+        bg_music->play();
+        introMusicPlaying = true;
+    }
 
     if (!isInit) {
         setUpFileSystem();
@@ -169,6 +178,9 @@ void MainWindow::on_btnAction_clicked()
         timer->stop();
         ui->btnAction->setText("");
         ui->btnAction->setStyleSheet("border:none;background: transparent;");
+        introMusicPlaying = false;
+        bg_music->stop();
+        delete bg_music;
         disconnect(timer,SIGNAL(timeout()),this,SLOT(render_main()));
         this->hide();
         playwindow *p = new playwindow();

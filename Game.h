@@ -12,6 +12,8 @@ extern bool isPlaying;
 extern QMediaPlayer *pianoNotes[3][70];
 extern bool isInit;
 extern QString appDir;
+extern QMediaPlayer *bg_music;
+extern bool introMusicPlaying;
 
 class Game
 {
