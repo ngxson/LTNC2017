@@ -8,6 +8,8 @@ QT       += core gui multimedia multimedia-private
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+win32:RC_ICONS += icon.ico
+CONFIG += static
 TARGET = ltnc2017
 TEMPLATE = app
 

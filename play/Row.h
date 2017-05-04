@@ -12,10 +12,12 @@ public:
     Cell *cell[10];
     int rightCell;
     bool isRedNote;
+    bool isGreenNote;
     Row();
     void setRightCell();
     int getRightCell();
     bool getIsRedNote();
+    bool getIsGreenNote();
 };
 
 #endif // ROW_H

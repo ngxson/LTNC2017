@@ -11,6 +11,7 @@ public:
     QMediaPlayer *notes[88];
     int notePlaying = 0;
     int noteLast = 0;
+    int transpose = 0;
     Music();
     void loadNewSong();
     void playNextNote();

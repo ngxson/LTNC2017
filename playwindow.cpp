@@ -15,7 +15,7 @@ playwindow::playwindow()
 {
     QGraphicsScene * scene = new QGraphicsScene();
 
-    PlayScreen *playscreen = new PlayScreen();
+    PlayScreen *playscreen = new PlayScreen(this);
     playscreen->setFlags(QGraphicsItem::ItemIsFocusable);
     playscreen->setFocus();
 

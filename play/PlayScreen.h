@@ -2,6 +2,7 @@
 #define PLAYSCREEN_H
 
 #include "Row.h"
+#include "../playwindow.h"
 #include <QObject>
 #include <QGraphicsItemGroup>
 #include <QSignalMapper>
@@ -14,8 +15,9 @@ class PlayScreen: public QObject,public QGraphicsItemGroup {
     Q_OBJECT
 public:
     Row *row[10];
-    PlayScreen();
-    void checkIfHitBar(int right_cell, bool isRedNote, int y);
+    PlayScreen(playwindow *parent);
+    void checkIfHitBar(int right_cell, bool isRedNote, bool isGreenNote, int y);
+    void jumpToGameOver();
 
 signals:
 

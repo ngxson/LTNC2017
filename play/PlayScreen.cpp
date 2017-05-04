@@ -4,6 +4,8 @@
 #include "Score.h"
 #include "Lives.h"
 #include "PlayScreen.h"
+#include "../scorescreen.h"
+#include "../playwindow.h"
 #include <QTime>
 #include <QTimer>
 #include <QMouseEvent>
@@ -28,10 +30,15 @@ int right_cell;
 bool dontCheckBottomRow = false;
 Score *scoretxt;
 Lives *livestxt;
+QTimer * timer_play;
+playwindow *my_parent;
 
-PlayScreen::PlayScreen()
+PlayScreen::PlayScreen(playwindow *parent)
 {
     int y;
+    isPlaying = false;
+    my_parent = parent;
+    isGameOver = false;
     current_row = 0;
     right_cell = 0;
     speed = SPEED_MIN;
@@ -60,9 +67,9 @@ PlayScreen::PlayScreen()
     }
 
     // Make timer and connect it
-    QTimer * timer = new QTimer();
-    connect(timer,SIGNAL(timeout()),this,SLOT(render()));
-    timer->start(15);
+    timer_play = new QTimer();
+    connect(timer_play,SIGNAL(timeout()),this,SLOT(render()));
+    timer_play->start(15);
 
     mo->setRect(0,0,CELL_WIDTH,BOTTOM_BAR_HEIGHT);
     mo->setBrush(* new QBrush(Qt::white));
@@ -76,6 +83,8 @@ PlayScreen::PlayScreen()
 
     this->addToGroup(scoretxt);
     this->addToGroup(livestxt);
+
+    isPlaying = true;
 }
 
 void PlayScreen::render() {
@@ -104,7 +113,7 @@ void PlayScreen::render() {
             right_cell = row[y]->getRightCell();
             if (current_row != y) {
                 current_row = y;
-                checkIfHitBar(right_cell, row[y]->getIsRedNote(), y);
+                checkIfHitBar(right_cell, row[y]->getIsRedNote(), row[y]->getIsGreenNote(), y);
             }
         }
 
@@ -132,19 +141,33 @@ void PlayScreen::render() {
     mo->setPos((qreal)mouse_x-CELL_WIDTH/2,SCREEN_HEIGHT-BOTTOM_BAR_HEIGHT);
 }
 
-void PlayScreen::checkIfHitBar(int right_cell, bool isRedNote, int y) {
+void PlayScreen::checkIfHitBar(int right_cell, bool isRedNote, bool isGreenNote, int y) {
     if (mo->x() > (right_cell-0.5)*CELL_WIDTH && mo->x() < (right_cell+0.5)*CELL_WIDTH) {
         if (isRedNote) {
             music->playRedNote();
             scoretxt->decrease(10);
+        } else if (isGreenNote) {
+            music->playNextNote();
+            livestxt->increase();
         } else {
             music->playNextNote();
             scoretxt->increase(1);
         }
         row[y]->cell[right_cell]->setScale(0.9);
     } else {
-        if (!isRedNote) {
+        if (!isRedNote && !isGreenNote) {
             livestxt->decrease();
+            if (lives <= 0) jumpToGameOver();
         }
     }
+}
+
+void PlayScreen::jumpToGameOver() {
+    isGameOver = true;
+    timer_play->stop();
+    disconnect(timer_play,SIGNAL(timeout()),this,SLOT(render()));
+    my_parent->view.hide();
+    ScoreScreen *p = new ScoreScreen();
+    p->pushNewScore(score);
+    p->show();
 }

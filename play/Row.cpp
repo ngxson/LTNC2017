@@ -15,6 +15,7 @@ Row::Row()
     int x;
     rightCell = 0;
     isRedNote = false;
+    isGreenNote = false;
 
     for (x=0 ; x < NUM_OF_CELL_X ; x++) {
         cell[x] = new Cell();
@@ -32,12 +33,19 @@ void Row::setRightCell() {
     cell[rightCell]->setPixmap(QPixmap(":/img/images/note_none.png"));
     cell[rightCell]->setPos(rightCell*CELL_WIDTH,0);
     cell[rightCell]->setScale(1);
+    isRedNote = false;
+    isGreenNote = false;
 
     // Render new cell
     rightCell = qrand() % NUM_OF_CELL_X;
-    isRedNote = qrand() % 100 < 4;
-    if (isRedNote) {
-        cell[rightCell]->setPixmap(QPixmap(":/img/images/note_red.png"));
+    if (qrand() % 100 < 15) {
+        if (qrand() % 5 > 0) {
+            isRedNote = true;
+            cell[rightCell]->setPixmap(QPixmap(":/img/images/note_red.png"));
+        } else {
+            isGreenNote = true;
+            cell[rightCell]->setPixmap(QPixmap(":/img/images/note_green.png"));
+        }
     } else {
         cell[rightCell]->setPixmap(QPixmap(":/img/images/note_black.png"));
     }
@@ -49,4 +57,8 @@ int Row::getRightCell() {
 
 bool Row::getIsRedNote() {
     return isRedNote;
+}
+
+bool Row::getIsGreenNote() {
+    return isGreenNote;
 }

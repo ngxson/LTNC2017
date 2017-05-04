@@ -18,6 +18,7 @@ void Score::increase(int many){
 }
 
 void Score::decrease(int many){
-    score -= many;
+    if (score-many < 0) score = 0;
+    else score -= many;
     setPlainText(QString("Score: ") + QString::number(score));
 }

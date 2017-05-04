@@ -27,9 +27,9 @@
    <widget class="QPushButton" name="btnAbout">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>210</x>
       <y>280</y>
-      <width>61</width>
+      <width>91</width>
       <height>51</height>
      </rect>
     </property>
@@ -45,7 +45,7 @@
    <widget class="QPushButton" name="btnHighScore">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>110</x>
       <y>280</y>
       <width>91</width>
       <height>51</height>
@@ -54,24 +54,6 @@
     <property name="font">
      <font>
       <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnPlay">
-    <property name="geometry">
-     <rect>
-      <x>300</x>
-      <y>260</y>
-      <width>121</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">
@@ -91,6 +73,45 @@
      <font>
       <family>Segoe UI</family>
       <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="loadingpercent">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>280</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>24</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>10%</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPlay">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>260</y>
+      <width>121</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
      </font>
     </property>
     <property name="text">

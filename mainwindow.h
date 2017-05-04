@@ -22,6 +22,7 @@ private slots:
     void on_btnAction_clicked();
     void on_btnAbout_clicked();
     void render_main();
+    void loadPianoNotes();
 
 private:
     Ui::MainWindow *ui;

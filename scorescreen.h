@@ -14,9 +14,11 @@ class ScoreScreen : public QWidget
 public:
     explicit ScoreScreen(QWidget *parent = 0);
     ~ScoreScreen();
+    void pushNewScore(int mScore);
 
 public slots:
     void on_btnBack_clicked();
+    void on_btnPlayAgain_clicked();
 
 private:
     Ui::ScoreScreen *ui;

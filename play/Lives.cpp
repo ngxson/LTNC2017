@@ -9,8 +9,8 @@ Lives::Lives(QGraphicsItem *parent): QGraphicsTextItem(parent){
 
     // draw the text
     setPlainText(QString("♥♥♥"));
-    setDefaultTextColor(Qt::white);
-    setFont(QFont("times",16));
+    setDefaultTextColor(QColor(255, 50, 50));
+    setFont(QFont("times",20));
 }
 
 void Lives::increase(){

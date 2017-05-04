@@ -14,5 +14,6 @@
         <file>images/note_green.png</file>
         <file>images/intro_logo.png</file>
         <file>images/intro_notes.png</file>
+        <file>images/intro_loading.png</file>
     </qresource>
 </RCC>
