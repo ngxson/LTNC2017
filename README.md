@@ -6,12 +6,14 @@
 
 # Screenshots
 
-- <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/1.png" width="200">
+- <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/1.png" height="250"> <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/2.png" height="250"> <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/3.png" height="250">
+- <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/4.png" height="250"> <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/5.png" height="250"> <img src="https://raw.githubusercontent.com/ngxson/LTNC2017/master/demo/6.png" height="250">
 		
 # Made using 
 
 - Qt Creator 4.1.0 (Community)
 - Adobe Photoshop CC 2015.5
+- InstallSimple 2.9
 	
 # Author 
 
